@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{bm}
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+\begin{document}
+
+\begin{equation}
+    \Phi(\vec{r}) = \int \mathrm{d}^{3} \vec{r}^{\prime} G(\vec{r}, \vec{r}^{\prime}) \left( - \frac{\rho(\vec{r}^{\prime})}{\epsilon_{0}}\right)
+\end{equation}
+
+\begin{equation}
+    \vec{A}(\vec{r}) := \frac{\mu_{0}}{4 \pi} \int \mathrm{d}^{3} r^{\prime} \frac{1}{| \vec{r} - \vec{r}^{\prime}|} \vec{j}(\vec{r}^{\prime})
+\end{equation}
+
+
+\begin{align}
+    G_0(\vec{x}, \vec{x}^{\prime}) &= - \frac{1}{4 \pi} \frac{1}{|\vec{x} - \vec{x}^{\prime}|} \\
+                                   &= \int \frac{\mathrm{d}^{3} \vec{k}}{(2 \pi)^{3}} \frac{ e^{-i \vec{k} \cdot (\vec{r} - \vec{r}^{\prime})}}{-\vec{k}^{2}} \\
+                                   &= -\frac{1}{2} \int \frac{\mathrm{d}^{2} k_{\perp}}{(2 \pi)^{2}} \frac{e^{- |\vec{k}_{\perp}| |z - z^{\prime}|}}{|\vec{k}_{\perp}|} e^{-i \vec{k}_{\perp} \cdot (\vec{r}_{\perp} - \vec{r}^{\prime}_{\perp})} \\
+                                   &= - \frac{1}{4 \pi} \sum\limits_{l=0}^{\infty} \sum\limits_{m=-l}^{l} \frac{4 \pi}{2l+1} \frac{r_{<}^{l}}{r_{>}^{l+1}} Y_{lm}(\theta, \phi) Y_{lm}^{\*}(\theta, \varphi) \\
+                                   &= -\frac{1}{(2 \pi)^{2}} \sum\limits_{m=-\infty}^{\infty} \int\limits_{-\infty}^{\infty} \mathrm{d}k \, e^{im (\varphi - \varphi^{\prime})} e^{-ik(z-z^{\prime})} I_{m}(|k| r_{<}) K_{m}(|k| r_{>})
+\end{align}
+
+Dirichlet Boundary condition:
+\begin{equation}
+    G_{D}(\vec{r}, \vec{r}^{\prime}) = 0 \, \forall \vec{r}^{\prime} \in \partial V
+\end{equation}
+
+\begin{equation}
+    \Theta_{V}(\vec{r}) \Phi(\vec{r}) =
+    \int\limits_{V} \mathrm{d}^{3} \, r^{\prime} G_{D}(\vec{r}, \vec{r}^{\prime}) \left( - \frac{\rho(\vec{r}^{\prime})}{\epsilon_{0}}\right)
+    + \int\limits_{\partial V} \mathrm{d} \vec{\Sigma}^{\prime} \cdot \left( \vec{\nabla}^{\prime} G_{D}(\prime{r}, \vec{r}^{\prime}) \Phi(\vec{r}^{\prime})  \right)
+\end{equation}
+
+
+Dirac Delta:
+\begin{equation}
+    \delta(x-\alpha) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} \mathrm{d}k \, e^{ik(x-\alpha)}
+\end{equation}
+
+\begin{equation}
+    Y_\ell^m( \theta , \varphi ) = \sqrt{\frac{(2\ell+1)}{ 4\pi}\frac{(\ell-m)! }{ (\ell+m)!}}  \, P_\ell^m ( \cos{\theta} ) \, e^{i m \varphi }
+\end{equation}
+
+
+\begin{align}
+    P_{l}^{0}(x) &= P_{l}(x) \\
+    P_{l}(1) &= 1 \\
+    P_{l}(-1) &= (-1)^{l} \\
+    P_{1}(x) = x
+\end{align}
+
+\end{document}
