@@ -1,7 +1,9 @@
 \documentclass[a4paper, twocolumn]{article}
 \usepackage{amsmath}
 \usepackage{bm}
-
+\usepackage{bbold}
+\usepackage{tensor}
+\usepackage{amssymb}
 \usepackage[margin=0.1in]{geometry}
 
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
@@ -12,7 +14,9 @@
 
 \footnotesize
 
-Maxwell's equation*s:
+\section{ED1}
+
+Maxwell's equations:
 \begin{align*}
     \vec{\nabla} \cdot \vec{E} &= \frac{\rho}{\epsilon_{0}} \\
     \vec{\nabla} \times \vec{B} &= \mu_{0} \vec{J} \\
@@ -72,6 +76,11 @@ Due to sheet of current:
     \vec{B}(\vec{r}) = \frac{\mu_{0}}{2} \vec{K} \times \hat{\vec{n}}(\vec{r})
 \end{equation*}
 
+\begin{align*}
+    \vec{D}_{\parallel}^{1} = \vec{D}_{\parallel}^{2} \\
+    \vec{E}_{\perp}^{1} = \vec{E}_{\perp}^{2}
+\end{align*}
+
 
 \begin{align*}
     G_0(\vec{x}, \vec{x}^{\prime}) =& - \frac{1}{4 \pi} \frac{1}{|\vec{x} - \vec{x}^{\prime}|} \\
@@ -83,8 +92,8 @@ Due to sheet of current:
 
 \begin{align*}
     F(\vec{r}, \vec{r}^{\prime})
-    =& (\dots) (A_{++} e^{+i \vec{k}_{\perp} \cdot ( \vec{r}_{\perp} + \vec{r}_{\perp}^{\prime})} + A_{+-} e^{+i \vec{k}_{\perp} \cdot ( \vec{r}_{\perp} - \vec{r}_{\perp}^{\prime})} \\
-     &+ A_{-+} e^{-i \vec{k}_{\perp} \cdot ( \vec{r}_{\perp} + \vec{r}_{\perp}^{\prime})} + A_{--} e^{-i \vec{k}_{\perp} \cdot ( \vec{r}_{\perp} - \vec{r}_{\perp}^{\prime})}) \\
+    =& (\dots) (A_{++} e^{+i |\vec{k}_{\perp}| ( z + z^{\prime})} + A_{+-} e^{+i |\vec{k}| ( z - z^{\prime})} \\
+     &+ A_{-+} e^{-i |\vec{k}_{\perp}| ( z + z^{\prime})} + A_{--} e^{-i |\vec{k}_{\perp}| ( z - z^{\prime})}) \\
     =& (\dots) (A_{l} r^{l} r^{\prime \, l} + B_{l} r^{l} r^{\prime \, -l-1} \\
      &+ C_{l} r^{-l-1} r^{\prime \, l} + D_{l} r^{-l-1} r^{\prime \, -l-1} ) \\
 \end{align*}
@@ -97,13 +106,17 @@ Dirichlet Boundary condition:
 \begin{equation*}
     \Phi(\vec{r}) =
     \int\limits_{V} d^{3} \, r^{\prime} G_{D}(\vec{r}, \vec{r}^{\prime}) \left( - \frac{\rho(\vec{r}^{\prime})}{\epsilon_{0}}\right)
-    + \int\limits_{\partial V} d \vec{\Sigma}^{\prime} \cdot \left( \vec{\nabla}^{\prime} G_{D}(\prime{r}, \vec{r}^{\prime}) \Phi(\vec{r}^{\prime})  \right)
+    + \int\limits_{\partial V} d \vec{\Sigma}^{\prime} \cdot \left( \vec{\nabla}^{\prime} G_{D}(\vec{r}, \vec{r}^{\prime}) \Phi(\vec{r}^{\prime})  \right)
 \end{equation*}
 
 
 Dirac Delta:
 \begin{equation*}
     \delta(x-\alpha) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} dk \, e^{ik(x-\alpha)}
+\end{equation*}
+
+\begin{equation*}
+    \delta(\vec{r} - \vec{r}^{\prime}) = \frac{1}{r^2 \sin\theta} \delta(r-r^{prime}) \delta(\theta-\theta^{prime}) \delta(\phi-\phi^{prime})
 \end{equation*}
 
 \begin{equation*}
@@ -195,5 +208,101 @@ Self-Capacitance:
 \begin{align*}
   \nabla(\mathbf{A} \cdot \mathbf{B}) &\ =\  (\mathbf{A} \cdot \nabla)\mathbf{B} \,+\,  (\mathbf{B} \cdot \nabla)\mathbf{A} \,+\,  \mathbf{A} {\times} (\nabla {\times} \mathbf{B}) \,+\,  \mathbf{B} {\times} (\nabla {\times} \mathbf{A})
 \end{align*}
+
+\begin{equation*}
+    \epsilon_{ijk} \epsilon^{imn} = \delta_{j}^{m} \delta_{k}^{n} - \delta_{j}^{n} \delta_{k}^{m}
+\end{equation*}
+
+\section{ED2}
+
+\begin{equation*}
+    F^{\mu \nu} = \partial^{\mu} A^{\nu} - \partial^{\nu} A^{\mu}
+\end{equation*}
+
+
+Classical EL field equations:
+\begin{equation*}
+    \frac{\partial \mathcal{L}}{\partial \phi_{i}} - \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu} \phi_i)} \right) = 0
+\end{equation*}
+
+ED Lagrangian density:
+\begin{equation*}
+    \mathcal{L} = -\frac{1}{4} F_{\alpha \beta} F^{\alpha \beta} + A_{\alpha} J^{\alpha}
+\end{equation*}
+
+Noethers theorem:
+\begin{align*}
+    \partial_{\mu} j^{\mu \alpha}(x) = 0 &&
+    j^{\mu \alpha}(x) = -\frac{\partial \mathcal{L}}{\partial (\partial_{\mu} \phi_{i})} t^{a}_{ij} \phi_{j}
+\end{align*}
+
+Energy-momentum tensor:
+\begin{equation*}
+    \tensor{T}{^\mu_\nu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu} \phi_{i})} (\partial_{\nu} \phi_{i}) - \tensor{g}{^{\mu}_{\nu}} \mathcal{L}
+\end{equation*}
+
+Electromagnetic field tensor:
+\begin{equation*}
+    \tensor{F}{^\mu^\nu} = \begin{bmatrix}
+      0     &  - E_x/c & - E_y/c &  - E_z/c \\
+     E_x/c &  0     & -B_z   &  B_y    \\
+     E_y/c &  B_z   &  0     & -B_x   \\
+     E_z/c & -B_y   &  B_x   &  0
+  \end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \tensor{F}{^\mu^\nu} = \mu_0 j^{\mu}
+\end{equation*}
+
+Retarded Potentials:
+\begin{align*}
+    D_{\text{ret}}(x-x^{\prime}) = \theta((x-x^{\prime})^{0}) \frac{1}{4 \pi | \vec{x} - \vec{x}^{\prime}|} \delta((x-x^{\prime})^{0} - | \vec{x} - \vec{x}^{\prime}|) \\
+    A^{\mu}_{\text{ret}}(x) = \int d^4 x^{\prime} D_{\text{ret}}(x-x^{\prime}) \mu_0 j^{\mu}(x^{\prime})
+\end{align*}
+
+Metric Tensor:
+\begin{align*}
+    \tensor{x}{^\mu} = \tensor{g}{^\mu^{\nu}} x_{\nu} \\
+    \tensor{g}{^\mu_\nu} = \tensor{g}{^\mu^\alpha} \tensor{g}{_\alpha_\nu}
+\end{align*}
+
+Lorentz Transformation:
+\begin{align*}
+    \tensor{g}{_\mu_\nu} = \tensor{\Lambda}{^\alpha_\mu} \tensor{g}{_\alpha_\beta} \tensor{\Lambda}{^\beta_\nu} \\
+    \tensor{g}{^\mu_\nu} = \tensor{\Lambda}{_\alpha^\mu} \tensor{g}{^\alpha_\beta} \tensor{\Lambda}{^\beta_\nu} = \tensor{\Lambda}{_\alpha^\mu} \tensor{\Lambda}{^\alpha_\nu} \\
+    \implies \vec{g} = \Lambda^{t} \vec{g} \Lambda
+\end{align*}
+
+\begin{equation*}
+    \Lambda = L(\vec{\eta}) R(\vec{\omega})
+\end{equation*}
+
+\begin{align*}
+    L(\vec{\eta}) = Q_{\eta} + e^{\eta} P_{\eta +} + e^{-\eta}P_{\eta-} \\
+    \vec{\eta} = \hat{\vec{\beta}} \tanh^{-1} \beta
+\end{align*}
+
+\begin{align*}
+    u^{\mu} = \frac{d z^{\mu}}{d \tau} \\
+    p^{\mu} = m u^{\mu} = (E/c, \vec{p})
+\end{align*}
+
+D'Alembertian:
+\begin{equation*}
+    \square = \partial^{\mu} \partial_{\mu}
+\end{equation*}
+
+Scalar field:
+\begin{equation*}
+    \phi^{\prime}(x^{\prime}) = \phi(\Lambda^{-1}x^{\prime}) = \phi(x)
+\end{equation*}
+
+Vector field:
+\begin{equation*}
+    W^{\prime \, \mu}(x^{\prime})
+    = \tensor{\Lambda}{^\mu_\nu} W^{\nu}(\Lambda^{-1}x^{\prime})
+    = \tensor{\Lambda}{^\mu_\nu} W^{\nu}(x)
+\end{equation*}
 
 \end{document}
