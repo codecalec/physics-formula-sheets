@@ -1,0 +1,204 @@
+\documentclass[a4paper, twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage[notrig]{physics}
+\usepackage[margin=0.1in]{geometry}
+
+\parindent=0pt
+
+\begin{document}
+
+%\footnotesize
+
+\begin{equation*}
+    \Pi \ket{\vb{r}} = \ket{-\vb{r}}
+\end{equation*}
+
+\section{Angular Momentum}
+
+\begin{equation*}
+    \vb{L} = -i \hbar ( \vb{r} \times \grad )
+\end{equation*}
+
+\begin{equation*}
+    \vb{J} = \vb{J} + \vb{S}
+\end{equation*}
+
+\begin{equation*}
+    \comm{J_{i}}{J_{j}} = i \hbar \epsilon_{ijk} J_{j}
+\end{equation*}
+
+\begin{equation*}
+    \comm{J_{i}}{J^{2}} = 0
+\end{equation*}
+
+\begin{equation*}
+    L^{2} \ket{l\,m} = \hbar^{2} l(l+1) \ket{l\,m}
+\end{equation*}
+
+\begin{equation*}
+    L_z \ket{l\,m} = \hbar^{2} m \ket{l\,m}
+\end{equation*}
+
+Clebsch-Gordan coefficients:
+\begin{equation*}
+    \ket{s\,m} = \sum\limits_{m} C_{m_1 m_2 m}^{s_1 s_2 s} \ket{s_1\,m_1}\ket{s_2\,m_2}
+\end{equation*}
+
+
+Ritz Method:
+\begin{align*}
+    \bar{H}[\tilde{0}](\lambda_i) &= \frac{ \expval{H}{\tilde{0}} }{ \braket{\tilde{0}} } \ge 0 \\
+    \pdv{\bar{H}}{\lambda_i} &= 0
+\end{align*}
+
+Hydrogen atom:
+\begin{align*}
+    \psi_{n \ell m}(r, \theta, \varphi) &= \sqrt{{\left( \frac{2}{n a^*_0} \right)}^3 \frac{(n - \ell - 1)!}{2 n (n + \ell)!}} e^{-\rho / 2} \rho^{\ell} L_{n - \ell - 1}^{2 \ell + 1}(\rho) Y_\ell^m (\theta, \varphi) \\
+    \rho &= \frac{ 2r }{n a_0} \\
+    \psi_{1 0 0} (r) &= \frac{1}{\sqrt{\pi} a_0^{3 / 2}} e^{-r / a_0} \\
+    \psi_{2, 0, 0} &= \frac{1}{4 \sqrt{2 \pi} a_0^{3 / 2}} \left( 2 - \frac{r}{a_0} \right) e^{-r / 2 a_0} \\
+    \psi_{2, 1, 0} &= \frac{1}{4 \sqrt{2 \pi} a_0^{3 / 2}} \frac{r}{a_0} e^{-r / 2 a_0} \cos \theta \\
+    \psi_{2, 1, \pm 1} &= \mp \frac{1}{8 \sqrt{\pi} a_0^{3/2}} \frac{r}{a_0} e^{-r / 2 a_0} \sin \theta ~ e^{\pm i \varphi}
+\end{align*}
+
+\section{Perturbation Theory}
+
+\begin{equation*}
+    H = H^{(0)} + H^{(1)}
+\end{equation*}
+
+\subsection{Time Independent}
+\subsubsection{Non-degenerate}
+\begin{equation*}
+    E_{n}^{(1)} = \expval{H^{(1)}}{\psi_{n}^{(0)}}
+\end{equation*}
+
+\begin{equation*}
+    \ket{\psi_{n}^{(1)}} = \sum\limits_{m \neq n}
+        \frac{ \expval{H^{(1)}}{\psi_{m}^{(0)}} }{ E_n^{(0)} - E_m^{(0)} }
+        \ket{\psi_{m}^{(0)}}
+\end{equation*}
+
+\begin{equation*}
+    E_{n}^{(2)} = \sum\limits_{m \neq n}
+    \frac{ \abs{ \mel{\psi_{m}^{(0)}}{H^{(1)}}{\psi_{n}^{(0)}} }^2 }{ E_n^{(0)} - E_m^{(0)} }
+\end{equation*}
+
+\subsubsection{Degenerate}
+
+\begin{equation*}
+    \hat{H}_{p \alpha \beta} = \mel{\psi_{n\,\alpha}^{(0)}}{H^{(1)}}{\psi_{n\,\beta}^{(0)}}
+\end{equation*}
+
+\begin{equation*}
+    \det ( \hat{H}_{p} - E^{(1)} \mathbb{I}) = 0
+\end{equation*}
+
+\begin{align*}
+    E_{n_a} = E_{n}^{(0)} + E_{n_\alpha}^{(1)} && (\alpha = 1,2,\dots,f) \\
+    \ket{psi}
+\end{align*}
+
+
+\section{Interaction Picture}
+
+\begin{equation*}
+    \ket{\alpha(t)}_{I} = e^{\frac{i}{\hbar} H_0 t} \ket{\alpha(t)}_{S}
+\end{equation*}
+
+\begin{equation*}
+    A_{I} = e^{\frac{i}{\hbar} H_0 t} A_{S} e^{- \frac{i}{\hbar} H_0 t}
+\end{equation*}
+
+\subsection{Time Dependent}
+
+\begin{equation*}
+    P_{f \leftarrow i} (t)
+        = \abs{ \mathcal{A}_{f \leftarrow i} }^2
+        = \abs{ \mel{f}{U_{I}}{i} }^2
+        = \abs{ c_n^{(1)}(t) + c_n^{(2)}(t) + \dots }^2
+\end{equation*}
+
+\begin{align*}
+    c_n^{(0)} =& \,\delta_{ni} \\
+    c_n^{(1)} =& \,\frac{-i}{\hbar} \int\limits_{t_0}^{t} dt^{\prime} \mel{n}{V_{I}(t^{\prime})}{i} \\
+    =& \, \frac{-i}{\hbar} \int\limits_{t_0}^{t} dt^{\prime} \, e^{i \omega_{n i}t^{\prime}} V_{ni}(t^{\prime}) \\
+\end{align*}
+
+Fermi Golden Rule for constant potential:
+\begin{equation*}
+    R_{f \rightarrow i} = \frac{2 \pi}{\hbar} \abs{ \mel{f}{V}{i} }^2 \delta(E_f - E_i)
+\end{equation*}
+
+
+Fermi Golden Rule for Harmonic Pertubation:
+\begin{equation*}
+    V(t) = v e^{i \omega t} + v^{\dagger} e^{- \omega t}
+\end{equation*}
+\begin{equation*}
+    R_{f \rightarrow i} =
+    \frac{2 \pi}{\hbar} \abs{ \mel{f}{V}{i} }^2 \delta(E_f - E_i + \hbar \omega)
+    + \frac{2 \pi}{\hbar} \abs{ \mel{f}{V}{i} }^2 \delta(E_f - E_i - \hbar \omega)
+\end{equation*}
+
+
+\section{Scattering Theory}
+
+Lippemann-Schwinger equation:
+\begin{equation*}
+    \ket{\psi^{\pm}} = \ket{\phi} + \frac{1}{E - H_0 \pm i \epsilon} \ket{\psi^{\pm}}
+\end{equation*}
+
+\begin{equation*}
+    \psi^{\pm}(x) = \phi(x) + \int dx^{\prime} \mel{x}{\frac{1}{E - H_0 \pm i \epsilon}}{x^\prime} \mel{x^\prime}{V}{\psi^{\pm}}
+\end{equation*}
+
+
+\begin{equation*}
+    \psi^{\pm}(x) = \phi(x) - \frac{2m}{\hbar^{2}} \int d^3 x^{\prime} \frac{ e^{\pm ik \abs{\vb{x} - \vb{x^\prime}}} }{ 4\pi \abs{\vb{x} - \vb{x^\prime}}} \mel{x^\prime}{V}{\psi^{\pm}}
+\end{equation*}
+for local potential $V$.
+
+\begin{equation*}
+    \psi^{+}(\vb{x}) = \frac{1}{(2\pi)^{3/2}} \left( e^{i \vb{k} \cdot \vb{x}} + \frac{ e^{i \vb{k} \cdot \vb{x}} }{\vb{r}} f(\vb{k}^\prime, \vb{k}) \right)
+\end{equation*}
+
+\begin{equation*}
+    f(\vb{k}^{\prime}, \vb{k}) = - \frac{1}{4 \pi} (2 \pi)^{3} \frac{2m}{\hbar^2} \mel*{\vb{k}^{\prime}}{V}{\psi^{(+)}}
+\end{equation*}
+
+\begin{equation*}
+    \dv{\sigma}{\Omega} = \abs{ f(\vb{k}^{\prime}, \vb{k}) }^2
+\end{equation*}
+
+Born Approximation:
+\begin{equation*}
+    f^{(1)}(\vb{k}^{\prime}, \vb{k}) = - \frac{1}{4 \pi} \frac{2m}{\hbar^2} \int d^3 x^{\prime} e^{ i(\vb{k} - \vb{k}^\prime) \cdot \vb{x}^\prime } V(\vb{x}^\prime)
+\end{equation*}
+
+For Spherical Potential $V(\vb{r})$,
+\begin{equation*}
+    f^{(1)}(\theta) = - \frac{2m}{\hbar^2} \frac{1}{q} \int\limits_{0}^{\infty} dr\, r V(r) \sin(q r)
+\end{equation*}
+where $$q=\abs{ \vb{k} - \vb{k}^\prime } = 2 k \sin(\theta/2)$$
+
+Optical Theorem:
+\begin{equation*}
+    \sigma_{\mathrm{total}} = \frac{4 \pi}{k} \Im f(\theta=0)
+\end{equation*}
+where $f(\theta=0) = f(\vb{k}^{\prime}, \vb{k})$.
+
+Rayleigh Formula:
+\begin{equation*}
+    e^{ikz} = \sum\limits_{l=0}^{\infty} i^{l} (2l+1) j_l(kr) P_{l}(\cos \theta)
+\end{equation*}
+where $j_l(kr)$ is a spherical bessel function.
+
+Partial Waves:
+\begin{equation*}
+    \phi(r, \theta) = A \left( e^{ikz} + k \sum\limits_{l=0}^{\infty} i^{l+1} (2l+1) a_l h_l^{(1)}(kr) P_{l}(cos\theta) \right)
+\end{equation*}
+
+\end{document}
